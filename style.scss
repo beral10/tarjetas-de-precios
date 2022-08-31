@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@mixin lg {
+    @media screen and (max-width: 1024px) {
+        @content
+    }
+};
+
+@mixin sm {
+    @media screen and (max-width: 640px) {
+        @content
+    }
+};
+
+body {
+    width: 100%;
+    background: #0f0c29;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #4d478b, #0f0c29);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #4d478b, #0f0c29);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include lg {
+        height: 100vh;
+        padding: 2rem 0;
+        margin:  0 auto;
+    }
+
+    @include sm {
+        height: 100%;
+        padding: 0;
+        margin:  0;
+    }
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+
+    @include lg {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        width: 100%;
+        height: 100%;
+        padding: 3rem;
+    }
+
+    @include sm {
+        width: 90%;
+        padding: 2rem 0;
+        box-sizing: border-box;
+    }
+}
+
+.cnt-tabla {
+    background: #4C4689;
+    padding: 0.75rem;
+    margin-left: -1.7rem;
+    transition-duration: 0.5s;
+
+    @include lg {
+        margin: 0;
+        border-radius: 15px;
+    }
+}
+
+.cnt-tabla:first-child {
+    border-radius: 15px 0 0 15px;
+
+    @include lg {
+        border-radius: 15px;
+    }
+}
+
+.cnt-tabla:last-child {
+    border-radius: 0 15px 15px 0;
+
+    @include lg {
+        border-radius: 15px;
+    }
+}
+
+.cnt-tabla:hover {
+    background: #8c87c1;
+    transition-duration: 0.5s;
+}
+
+.cnt-tabla.recomendado {
+    z-index: 1;
+    box-shadow: 0 0 50px rgba(159, 155, 201, 0.8);
+    border-radius: 15px;
+    background: #211D45;
+    transition: 0.3s all ease-in-out;
+
+    @include lg {
+        box-shadow: none;
+        z-index: 0;
+    }
+}
+
+.cnt-tabla.recomendado:hover {
+    transform: scale(1.01);
+    background: #554ca1;
+
+    @include lg {
+        transform: none;
+    }
+}
+
+.tabla {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    color: #000;
+    padding: 2rem;
+    max-width: 380px;
+    width: 100%;
+    max-height: 442px;
+    height: 100%;
+    box-sizing: border-box;
+    gap: 1rem;
+    border-radius: 3px;
+
+    @include lg {
+        max-width: 350px;
+        width: 100%;
+        max-height: 430px;
+        height: 100%;
+        padding: 1rem;
+    }
+
+    @include sm {
+        max-width: 300px;
+        width: 100%;
+        max-height: 380px;
+        height: 100%;
+        gap: 0.5rem;
+    }
+
+    & h3 {
+        font-size: 1.6rem;
+    }
+
+    & .costo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+
+        & .signo {
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        & .num-entero {
+            display: flex;
+            align-items: center;
+            font-size: 7rem;
+            font-weight: bold;
+
+            @include sm {
+                font-size: 6rem;
+            }
+
+            & .num-decimal {
+                font-size: 3.5rem;
+                font-weight: bold;
+
+                @include sm {
+                    font-size: 3.2rem;
+                }
+            }
+        }
+
+        & .mensualidad {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #ccc;
+        }
+    }
+
+    & .beneficios {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        list-style: none;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+
+        & li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1.1rem;
+
+            & svg {
+                width: 20px;
+                color: #008000;
+            }
+        }
+    }
+
+    & .btn {
+        display: block;
+
+        & a {
+            background: #4C4689;
+            display: block;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            border: solid 1px #999;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+
+            @include sm {
+                padding: 1rem 1.8rem;
+            }
+        }
+
+        & a:hover {
+            transform: scale(1.02);
+        }
+    }
+
+    & .btn.recomendado {
+        & a {
+            background: #211D45;
+        }
+
+        & a:hover {
+            background: #554ca1
+        }
+    }
+}
+
+.tabla.recomendado {
+    max-height: 500px;
+    height: 100%;
+    padding: 60px 30px 60px 30px;
+    border-radius: 3px;
+
+    @include lg {
+        max-width: 350px;
+        width: 100%;
+        max-height: 430px;
+        height: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    @include sm {
+        max-width: 300px;
+        width: 100%;
+        max-height: 380px;
+        height: 100%;
+    }
+}
